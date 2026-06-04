@@ -17,6 +17,11 @@ s5_01_undo_levels.py
 이 스크립트는 5번까지 갈 수 있는 상태를 자동으로 만들어 두고,
 학습자가 각 단계를 직접 실행하며 git status / git log 의 변화를 관찰하게 한다.
 """
+
+
+# git restore test
+
+
 import sys
 from pathlib import Path
 
