@@ -10,14 +10,8 @@ git reflog 는 'HEAD 가 어디에 있었는지'의 기록이다.
 따라서 'reset --hard 했더니 망했다' 같은 사고가 나도,
 보통은 reflog 의 SHA 를 보고 그 커밋으로 다시 브랜치를 만들면 복구가 된다.
 
-이 실습이 자동으로 하는 일
--------------------------
-1) 커밋 3개를 쌓아둔다 (v1 → v2 → v3 → v4)
-2) reset --hard HEAD~2 로 v3, v4 를 강제 삭제
-   → git log 에는 v1, v2 만 남음. v3, v4 는 'unreachable' 상태가 된다.
-학습자가 직접 할 일: reflog 를 읽고, v4 의 SHA 를 찾아 브랜치를 다시 만든다.
 """
-
+########### 222222
     # 학습자에게 충격을 주기 위해 v3, v4 를 일부러 날린다.
     # 이렇게 하면 git log 에는 v1, v2 만 남고 v3/v4 는 'unreachable' 이 된다.
     run(["git", "reset", "--hard", "HEAD~2"], cwd=repo, quiet=True)
