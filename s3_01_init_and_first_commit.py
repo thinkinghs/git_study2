@@ -17,7 +17,7 @@ s3_01_init_and_first_commit.py
     이 실습의 목적이므로, 학습자가 손으로 명령을 쳐서 status 변화를 눈으로 봐야 한다.
 """
 
-# log test
+# pull test
 
 import sys
 from pathlib import Path
