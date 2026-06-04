@@ -17,6 +17,10 @@ git reflog 는 'HEAD 가 어디에 있었는지'의 기록이다.
    → git log 에는 v1, v2 만 남음. v3, v4 는 'unreachable' 상태가 된다.
 학습자가 직접 할 일: reflog 를 읽고, v4 의 SHA 를 찾아 브랜치를 다시 만든다.
 """
+
+### local change
+
+
 import sys
 from pathlib import Path
 
