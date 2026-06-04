@@ -18,34 +18,6 @@ git reflog 는 'HEAD 가 어디에 있었는지'의 기록이다.
 학습자가 직접 할 일: reflog 를 읽고, v4 의 SHA 를 찾아 브랜치를 다시 만든다.
 """
 
-### local change
-
-
-import sys
-from pathlib import Path
-
-sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
-from _helpers import (  # noqa: E402
-    make_clean_repo_dir, banner, instruct,
-    write_file, run, ensure_local_git_identity, append_line,
-)
-
-
-def main() -> None:
-    banner("5교시 실습 4 — reflog 로 사라진 커밋 복구하기")
-
-    repo = make_clean_repo_dir("reflog-recovery")
-    run(["git", "init", "-b", "main"], cwd=repo, quiet=True)
-    ensure_local_git_identity(repo)
-
-    # 커밋 4개를 쌓는다 (구분이 가도록 메시지에 v1~v4).
-    write_file(repo / "log.txt", "v1\n")
-    run(["git", "add", "."], cwd=repo, quiet=True)
-    run(["git", "commit", "-m", "v1"], cwd=repo, quiet=True)
-    for v in ("v2", "v3", "v4"):
-        append_line(repo / "log.txt", v)
-        run(["git", "commit", "-am", v], cwd=repo, quiet=True)
-
     # 학습자에게 충격을 주기 위해 v3, v4 를 일부러 날린다.
     # 이렇게 하면 git log 에는 v1, v2 만 남고 v3/v4 는 'unreachable' 이 된다.
     run(["git", "reset", "--hard", "HEAD~2"], cwd=repo, quiet=True)
